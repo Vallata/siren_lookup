@@ -1,1 +1,14 @@
+<h1>Charger votre fichier</h1>
+<p>Le fichier doit être en .xls, avec vos noms d'entreprises en colonne A</p>
 
+<%= simple_form_for :lookup, url: upload_lookups_path, method: :post, html: { multipart: true } do |f| %>
+  <%= f.input :file, as: :file %>
+
+  <%= f.label :fields, 'Sélectionnez les champs à inclure dans le fichier Excel :' %>
+  <%= f.input :siren, as: :boolean, label: 'SIREN', input_html: { name: 'fields[siren]' } %>
+  <%= f.input :adresse, as: :boolean, label: 'Adresse', input_html: { name: 'fields[adresse]' } %>
+  <%= f.input :forme_juridique, as: :boolean, label: 'Nature juridique', input_html: { name: 'fields[nature_juridique]' } %>
+  <%= f.input :code_naf, as: :boolean, label: 'Code NAF', input_html: { name: 'fields[code_naf]' } %>
+
+  <%= f.submit 'Trouver les informations des entreprises' %>
+<% end %>
