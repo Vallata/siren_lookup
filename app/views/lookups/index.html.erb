@@ -1,4 +1,5 @@
-<h1>Téléverser un fichier</h1>
+<h1>Charger votre fichier</h1>
+<p>Le fichier doit être en .xls, avec vos noms d'entreprises en colonne A</p>
 
 <%= simple_form_for :lookup, url: upload_lookups_path, method: :post, html: { multipart: true } do |f| %>
   <%= f.input :file, as: :file %>
