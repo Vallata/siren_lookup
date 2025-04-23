@@ -1,0 +1,14 @@
+<h1>Téléverser un fichier</h1>
+
+<%= simple_form_for :lookup, url: upload_lookups_path, method: :post, html: { multipart: true } do |f| %>
+  <%= f.input :file, as: :file %>
+
+  <%= f.label :fields, 'Sélectionnez les champs à inclure dans le fichier Excel :' %>
+  <%= f.input :siren, as: :boolean, label: 'SIREN', input_html: { name: 'fields[siren]' } %>
+  <%= f.input :adresse, as: :boolean, label: 'Adresse', input_html: { name: 'fields[adresse]' } %>
+  <%= f.input :raison_sociale, as: :boolean, label: 'Raison sociale', input_html: { name: 'fields[nom_raison_sociale]' } %>
+  <%= f.input :forme_juridique, as: :boolean, label: 'Nature juridique', input_html: { name: 'fields[nature_juridique]' } %>
+  <%= f.input :code_naf, as: :boolean, label: 'Code NAF', input_html: { name: 'fields[code_naf]' } %>
+
+  <%= f.submit 'Télécharger' %>
+<% end %>
