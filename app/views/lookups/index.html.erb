@@ -1,4 +1,4 @@
-<div style="margin:20px;">
+<div class="mt-8 w-xl">
   <h1 class="text-2xl mb-4">Trouver des informations sur les entreprises</h1>
   <p>Charger votre fichier excel</p>
   <ul class="mb-4">
@@ -24,5 +24,14 @@
       </div>
       <%= f.submit 'Trouver les informations des entreprises', class: "w-full bg-blue-600 text-white font-semibold py-2 px-4 rounded hover:bg-blue-700 transition" %>
     <% end %>
+  </div>
+
+  <div class="mt-28">
+    <p>------------------</p>
+    <h2 class="text-2xl">Documentation</h2>
+    <ol>
+      <li>Les informations sont recherchées sur l'API : <a href="https://recherche-entreprises.api.gouv.fr" class="underline" target="_blank">https://recherche-entreprises.api.gouv.fr/</a></li>
+      <li>La "nature juridique" est encodée en chiffres sur l'API. Il est possible d'en savoir plus sur le chiffre correspondant sur : <a href="https://recherche-entreprises.api.gouv.fr" target="_blank" class="underline">https://www.insee.fr/fr/information/2028129</a></li>
+    </ol>
   </div>
 </div>
