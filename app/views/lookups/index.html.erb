@@ -16,15 +16,13 @@
           <%= f.label :fields, 'Que voulez-vous rechercher ?' %>
         </div>
         <div class="flex flex-wrap gap-2 mt-2" >
-          <%= f.input :siren, as: :boolean, label: 'SIREN', input_html: { name: 'fields[siren]' }, label_html: { class: "px-4 py-2 rounded-full bg-blue-100 text-blue-700 cursor-pointer transition relative hover:bg-blue-200"} %>
-          <%= f.input :adresse, as: :boolean, label: 'Adresse', input_html: { name: 'fields[adresse]' }, label_html: { class: "px-4 py-2 rounded-full bg-blue-100 text-blue-700 cursor-pointer transition relative hover:bg-blue-200"} %>
-          <%= f.input :forme_juridique, as: :boolean, label: 'Nature juridique', input_html: { name: 'fields[nature_juridique]' }, label_html: { class: "px-4 py-2 rounded-full bg-blue-100 text-blue-700 cursor-pointer transition relative hover:bg-blue-200"} %>
-          <%= f.input :code_naf, as: :boolean, label: 'Code NAF', input_html: { name: 'fields[code_naf]' }, label_html: { class: "px-4 py-2 rounded-full bg-blue-100 text-blue-700 cursor-pointer transition relative hover:bg-blue-200"} %>
+          <%= f.input :siren, as: :boolean, label: 'SIREN', input_html: { name: 'fields[siren]', class: "mr-2" }, label_html: { class: "px-4 py-2 rounded-full bg-blue-100 text-blue-700 cursor-pointer transition relative hover:bg-blue-200"} %>
+          <%= f.input :adresse, as: :boolean, label: 'Adresse', input_html: { name: 'fields[adresse]', class: "mr-2" }, label_html: { class: "px-4 py-2 rounded-full bg-blue-100 text-blue-700 cursor-pointer transition relative hover:bg-blue-200"} %>
+          <%= f.input :forme_juridique, as: :boolean, label: 'Nature juridique', input_html: { name: 'fields[nature_juridique]', class: "mr-2" }, label_html: { class: "px-4 py-2 rounded-full bg-blue-100 text-blue-700 cursor-pointer transition relative hover:bg-blue-200"} %>
+          <%= f.input :code_naf, as: :boolean, label: 'Code NAF', input_html: { name: 'fields[code_naf]', class: "mr-2" }, label_html: { class: "px-4 py-2 rounded-full bg-blue-100 text-blue-700 cursor-pointer transition relative hover:bg-blue-200"} %>
         </div>
       </div>
       <%= f.submit 'Trouver les informations des entreprises', class: "w-full bg-blue-600 text-white font-semibold py-2 px-4 rounded hover:bg-blue-700 transition" %>
     <% end %>
   </div>
 </div>
-
-
