@@ -23,7 +23,10 @@ gem 'axlsx_rails'  # Pour générer le fichier Excel de résultat
 
 gem 'simple_form'
 gem 'write_xlsx'
+gem 'importmap-rails'
 
+gem "stimulus-rails"
+gem "tailwindcss-rails"
 
 
 # Use Redis adapter to run Action Cable in production

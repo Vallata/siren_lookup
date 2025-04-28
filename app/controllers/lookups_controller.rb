@@ -12,7 +12,7 @@ class LookupsController < ApplicationController
     File.open(input_path, 'wb') { |f| f.write(uploaded_file.read) }
 
     # Récupération des champs sélectionnés par l'utilisateur
-    selected_fields = params[:fields].select { |key, value| value == '1' }.keys
+    selected_fields = params[:fields]&.select { |key, value| value == '1' }&.keys || []
 
     # Appel du traitement
     output_path = process_excel_file(input_path, selected_fields)
