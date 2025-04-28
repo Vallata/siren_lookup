@@ -1,19 +1,37 @@
-<div style="margin:20px;">
-  <h1>Charger votre fichier</h1>
-  <p>Le fichier doit être en .xlsx, avec vos noms d'entreprises en colonne A</p>
+<div class="mt-8 w-xl caca">
+  <h1 class="heading">Infos Entreprises</h1>
+  <p>Charger votre fichier excel</p>
+  <ul class="list">
+    <li>Avec les noms d'entreprises en colonne A</li>
+    <li>En format .xlsx</li>
+  </ul>
 
-  <div style="margin:20px 0px;">
+  <div class="upload-box">
     <%= simple_form_for :lookup, url: upload_lookups_path, method: :post, html: { multipart: true } do |f| %>
-      <%= f.input :file, as: :file %>
-      <div style="margin:20px 0px;">
-
-        <%= f.label :fields, 'Sélectionnez les champs à inclure dans le fichier Excel :' %>
-        <%= f.input :siren, as: :boolean, label: 'SIREN', input_html: { name: 'fields[siren]' } %>
-        <%= f.input :adresse, as: :boolean, label: 'Adresse', input_html: { name: 'fields[adresse]' } %>
-        <%= f.input :forme_juridique, as: :boolean, label: 'Nature juridique', input_html: { name: 'fields[nature_juridique]' } %>
-        <%= f.input :code_naf, as: :boolean, label: 'Code NAF', input_html: { name: 'fields[code_naf]' } %>
-      </div>
-      <%= f.submit 'Trouver les informations des entreprises' %>
-    <% end %>
+      <%= f.input :file, as: :file, label: "" %>
   </div>
+
+  <div class="fields-selection">
+    <div class="mb-8">
+      <%= f.label :fields, 'Que voulez-vous rechercher ?' %>
+    </div>
+
+    <div class="options mb-8">
+      <%= f.input :siren, as: :boolean, label: 'SIREN', input_html: { name: 'fields[siren]', class: "checkbox" }, label_html: { class: "pill" } %>
+      <%= f.input :adresse, as: :boolean, label: 'Adresse', input_html: { name: 'fields[adresse]', class: "checkbox" }, label_html: { class: "pill" } %>
+      <%= f.input :forme_juridique, as: :boolean, label: 'Nature juridique', input_html: { name: 'fields[nature_juridique]', class: "checkbox" }, label_html: { class: "pill" } %>
+      <%= f.input :code_naf, as: :boolean, label: 'Code NAF', input_html: { name: 'fields[code_naf]', class: "checkbox" }, label_html: { class: "pill" } %>
+    </div>
+  </div>
+  <%= f.submit 'Trouver les informations des entreprises', class: "submit-btn" %>
+  <% end %>
+</div>
+
+<div class="documentation">
+  <p>------------------</p>
+  <h2 class="heading">Documentation</h2>
+  <ol>
+    <li>Les informations sont recherchées sur l'API : <a href="https://recherche-entreprises.api.gouv.fr" class="link" target="_blank">https://recherche-entreprises.api.gouv.fr/</a></li>
+    <li>La "nature juridique" est encodée en chiffres sur l'API. Pour trouver la nature juridique correspondante, se reporter à : <a href="https://recherche-entreprises.api.gouv.fr" target="_blank" class="link">https://www.insee.fr/fr/information/2028129</a></li>
+  </ol>
 </div>

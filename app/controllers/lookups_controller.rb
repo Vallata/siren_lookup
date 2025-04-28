@@ -3,8 +3,9 @@ class LookupsController < ApplicationController
   end
 
   def upload
+    return redirect_to root_path if params[:lookup].nil?
+
     uploaded_file = params[:lookup][:file]
-    return redirect_to root_path, alert: "Aucun fichier fourni." if uploaded_file.nil?
 
     # Sauvegarde temporaire du fichier
     input_path = Rails.root.join('tmp', 'uploads', uploaded_file.original_filename)
