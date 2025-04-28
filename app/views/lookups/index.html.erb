@@ -1,68 +1,30 @@
 <div style="margin:20px;">
-  <h1>Charger votre fichier</h1>
-  <p>Le fichier doit être en .xlsx, avec vos noms d'entreprises en colonne A</p>
+  <h1 class="text-2xl mb-4">Trouver des informations sur les entreprises</h1>
+  <p>Charger votre fichier excel</p>
+  <ul class="mb-4">
+    <li>- Avec les noms d'entreprises en colonne A</li>
+    <li>- En format .xlsx</li>
+  </ul>
 
-  <div class="border-2 border-dashed border-blue-400 text-blue-500 p-6 text-center rounded-lg cursor-pointer mb-6 hover:bg-blue-50 transition">
+  <div class="border-2 border-dashed border-blue-400 text-blue-500 p-6 text-center rounded-lg cursor-pointer mb-4 hover:bg-blue-50 transition">
     <%= simple_form_for :lookup, url: upload_lookups_path, method: :post, html: { multipart: true } do |f| %>
-    <%= f.input :file, as: :file %>
+    <%= f.input :file, as: :file, label: "" %>
   </div>
 
-      <div style="margin:20px 0px;">
-
-        <%= f.label :fields, 'Sélectionnez les champs à inclure dans le fichier Excel :' %>
-        <%= f.input :siren, as: :boolean, label: 'SIREN', input_html: { name: 'fields[siren]' } %>
-        <%= f.input :adresse, as: :boolean, label: 'Adresse', input_html: { name: 'fields[adresse]' } %>
-        <%= f.input :forme_juridique, as: :boolean, label: 'Nature juridique', input_html: { name: 'fields[nature_juridique]' } %>
-        <%= f.input :code_naf, as: :boolean, label: 'Code NAF', input_html: { name: 'fields[code_naf]' } %>
+      <div class="mb-10">
+        <div>
+          <%= f.label :fields, 'Que voulez-vous rechercher ?' %>
+        </div>
+        <div class="flex flex-wrap gap-2 mt-2" >
+          <%= f.input :siren, as: :boolean, label: 'SIREN', input_html: { name: 'fields[siren]' }, label_html: { class: "px-4 py-2 rounded-full bg-blue-100 text-blue-700 cursor-pointer transition relative hover:bg-blue-200"} %>
+          <%= f.input :adresse, as: :boolean, label: 'Adresse', input_html: { name: 'fields[adresse]' }, label_html: { class: "px-4 py-2 rounded-full bg-blue-100 text-blue-700 cursor-pointer transition relative hover:bg-blue-200"} %>
+          <%= f.input :forme_juridique, as: :boolean, label: 'Nature juridique', input_html: { name: 'fields[nature_juridique]' }, label_html: { class: "px-4 py-2 rounded-full bg-blue-100 text-blue-700 cursor-pointer transition relative hover:bg-blue-200"} %>
+          <%= f.input :code_naf, as: :boolean, label: 'Code NAF', input_html: { name: 'fields[code_naf]' }, label_html: { class: "px-4 py-2 rounded-full bg-blue-100 text-blue-700 cursor-pointer transition relative hover:bg-blue-200"} %>
+        </div>
       </div>
-      <%= f.submit 'Trouver les informations des entreprises' %>
+      <%= f.submit 'Trouver les informations des entreprises', class: "w-full bg-blue-600 text-white font-semibold py-2 px-4 rounded hover:bg-blue-700 transition" %>
     <% end %>
   </div>
 </div>
 
-<div style="margin:20px;">
-  <h1>Charger votre fichier</h1>
-  <p>Le fichier doit être en .xlsx, avec vos noms d'entreprises en colonne A</p>
 
-  <div style="margin:20px 0px;">
-    <%= simple_form_for :lookup, url: upload_lookups_path, method: :post, html: { multipart: true, data: { controller: "spinner", action: "submit->spinner#submit" } } do |f| %>
-
-      <!-- Zone Drag & Drop -->
-      <div data-controller="drop-zone" data-drop-zone-target="zone"
-        class="border-2 border-dashed border-blue-400 text-blue-500 p-6 text-center rounded-lg cursor-pointer mb-6 hover:bg-blue-50 transition"
-        data-action="dragenter->drop-zone#handleDragEnter dragover->drop-zone#handleDragOver dragleave->drop-zone#handleDragLeave drop->drop-zone#handleDrop">
-        Déposez votre fichier ici ou cliquez pour le sélectionner
-        <%= file_field_tag 'lookup[file]', class: "hidden", data: { drop_zone_target: "input" }, onchange: "this.form.submit();" %>
-      </div>
-
-
-      <!-- Pilules de sélection -->
-      <div data-controller="pill-toggle" class="flex flex-wrap gap-2 mb-6">
-        <% { siren: 'SIREN', adresse: 'Adresse', nature_juridique: 'Nature juridique', code_naf: 'Code NAF' }.each do |field, label| %>
-          <label data-action="click->pill-toggle#toggle"
-           class="px-4 py-2 rounded-full bg-blue-100 text-blue-700 cursor-pointer transition relative hover:bg-blue-200"
-           data-pill-toggle-target="pill">
-          <%= check_box_tag "fields[#{field}]", '1', false, class: "hidden" %>
-          <%= label %>
-          <!-- Affichage de la croix -->
-          <span class="absolute -top-2 -right-2 hidden bg-white text-blue-700 rounded-full text-xs px-1 cross">×</span>
-        </label>
-        <% end %>
-      </div>
-
-
-      <!-- Bouton de soumission -->
-      <%= f.submit 'Lancer le traitement', class: "w-full bg-blue-600 text-white font-semibold py-2 px-4 rounded hover:bg-blue-700 transition" %>
-
-      <!-- Spinner de chargement -->
-      <div data-spinner-target="spinner" id="spinner" class="hidden mt-4 text-center">
-        <p class="text-gray-600">Traitement en cours...</p>
-        <div class="animate-spin rounded-full h-6 w-6 border-t-2 border-blue-600 mx-auto mt-2"></div>
-      </div>
-    <% end %>
-  </div>
-
-  <!-- Texte supplémentaire pour démo -->
-  <h1 class="text-4xl font-bold text-blue-600">Hello Tailwind</h1>
-
-</div>
